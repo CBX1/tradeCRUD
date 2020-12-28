@@ -227,7 +227,6 @@ const mutations = {
    },
   async [LOGIN_USER](state, user){
      state.user = user;
-     console.log(state.user)
    },
    [LOGIN_CHANGE](state){
     state.userLogin = !state.userLogin;
@@ -236,6 +235,9 @@ const mutations = {
      state.userLogin=false;
      state.trading = [];
      state.user = null;
+     localStorage.username = "null";
+     localStorage.password = "null";
+     localStorage.tid = "null";
    }
 
 };

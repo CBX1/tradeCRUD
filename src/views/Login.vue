@@ -7,8 +7,8 @@
         <input v-model="username" class="inputText" type="text"/><br><br><br> <br>
         <span class="par"> Password </span> <br><br>
         <input v-model="password" class="inputText" type="password"/><br> <br><br>
-    <br> <button class="buttonclass" type="button" @click="loginCheck">  Login </button><br> <br>
-    <button class="buttonclass1" @click="register"> Don't have an account? </button>
+        <br> <button class="buttonclass" @click="loginCheck" type="button">  Login </button><br> <br>
+        <button class="buttonclass1" @click="register" type="button" > Don't have an account? </button>
         </form>
             <br>
         <p v-if="incorrect_password"> incorrect password </p>
@@ -32,7 +32,21 @@ import axios from 'axios'
             }
         },
         created() {
-            this.checkifLogin();
+          
+              if (localStorage.tid !== "null") {
+                  const t = new user(localStorage.username, localStorage.password, localStorage.tid);
+                this.loginUser(t);
+                this.loginChange();
+              //  // console.log(localStorage.tid);
+                // // console.log(data[0]._id)
+                this.$router.push({name:'about'})
+                  // console.log(t);
+            this.loginUser(t);
+            }
+            else{
+                // console.log("nay")
+            }
+              this.checkifLogin();
         },
         computed: {
             ...mapState(['user','userLogin']),
@@ -48,7 +62,7 @@ import axios from 'axios'
       }
     },
           async  loginCheck(){
-              console.log(this.username + "test" )
+            //  // console.log(this.username + "test" )
               if((this.username != "" && this.username != null) && (this.password != "" && this.password != null)   ){
                     await axios({
       method: 'POST',
@@ -81,12 +95,15 @@ import axios from 'axios'
            }
            else{
                 const t = new user(data[0].email,data[0].password, data[0]._id);
-                console.log(t)
+               // // console.log(t)
                 this.loginUser(t);
-                console.log(this.user)
+               // // console.log(this.user)
                 this.loginChange();
-                console.log(data[0]._id)
+                // // console.log(data[0]._id)
                 this.$router.push({name:'about'})
+                  localStorage.username = t.username;
+                localStorage.password = t.password;
+                localStorage.tid = t.tid;
            }
          });
 
@@ -94,6 +111,7 @@ import axios from 'axios'
               else{
                   this.incorrect_password=true;
               }
+              
         }
         },
     }

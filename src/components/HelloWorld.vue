@@ -1,6 +1,6 @@
 <template width:100%>
 <div class="background">
-  <div class="container">
+
       <button
     type="button"
     class="btn"
@@ -10,7 +10,8 @@
     Add Trade
   </button>
      <button @click="logout()"> Logout </button>
-  <table class="tableC">
+       <div class="container">
+  <table ref="tablerow" rel="tablerow" class="tableC">
 
 
          <thead>
@@ -25,7 +26,7 @@
                 </tr>
             </thead>
             <tbody class="tableB">
-                <tr v-for="info in trading" :key="info.trade">
+                <tr v-for="info in trading" :key="info.tid">
                     <td>{{info.trade}}</td>
                     <td>{{info.quantity}}</td>
                     <td> {{info.sellorBuy}} </td>
@@ -34,9 +35,9 @@
                     <td> {{profit(info)}} $ </td>
                    <td> <img class="iconClass" src="../assets/edit.svg" @click="change(info)"> 
                      <img class="iconClass" src="../assets/delete.svg" @click="delTrade(info)">  </td>
-                   <div v-if="info.display" > <Form :tradie="info"/> </div>
-                     
+                       <div v-if="info.display" > <Form :tradie="info"/> </div>
                 </tr>
+              
                     
             </tbody>
   </table>
@@ -80,9 +81,11 @@ created() {
   this.checkifLogin();
   this.importData();
 },
-
+mounted(){
+  this.checkifLogin();
+},
   methods: {
-    ...mapActions(['deleteTrade','editTrade','importTrades','userLogout']),
+    ...mapActions(['deleteTrade','editTrade','importTrades','userLogout','loginUser']),
      profit(info){
         return (info.resell - info.buy) * info.quantity;
       },
@@ -115,7 +118,12 @@ created() {
       logout(){
         this.userLogout();
           this.$router.push({name:'login'})
+      },
+      insertrow(){
+       var x =  this.$refs['tablerow'].insertRow(5);
+       x.innerHTML = "hello";
       }
+
 
 },
  
@@ -154,7 +162,6 @@ a {
 .container{
   display:flex;
   flex-direction:column;
-  align-content:space-between;
 }
 .tableC{
   font-size:35px;
