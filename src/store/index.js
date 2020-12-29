@@ -232,10 +232,13 @@ const mutations = {
    [LOGIN_CHANGE](state){
     state.userLogin = !state.userLogin;
    },
-   [USER_LOGOUT](state){
+ async  [USER_LOGOUT](state){
      state.userLogin=false;
      state.trading = [];
      state.user = null;
+     localStorage.username = "null";
+     localStorage.password = "null";
+     localStorage.tid = "null";
    }
 
 };
@@ -265,7 +268,7 @@ loginChange({commit}){
 commit(LOGIN_CHANGE);
 },
 
-userLogout({commit}){
+async userLogout({commit}){
   commit(USER_LOGOUT);
 }
 

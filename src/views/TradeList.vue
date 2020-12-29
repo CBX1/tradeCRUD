@@ -128,8 +128,10 @@ mounted(){
       importData(){
         this.importTrades()
       },
-      logout(){
-        this.userLogout();
+     async logout(){
+        await this.userLogout();
+        console.log(this.user);
+        console.log(this.userLogin)
           this.$router.push({name:'login'})
       },
       insertrow(){

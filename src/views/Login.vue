@@ -120,6 +120,8 @@ import axios from 'axios'
                    },
         checkifLogin(){
       if(this.userLogin){
+          console.log("yes");
+          console.log(this.userLogin)
         this.$router.push({name:'list'})
       }
     },
