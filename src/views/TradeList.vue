@@ -4,11 +4,15 @@
       <button 
     type="button"
     class="btn"
-    @click="showModal"
+    @click="showModal()"
   >
  
     Add Trade
   </button>
+    <modal
+                      v-show="isModalVisibleN"
+                      @close="closeModal"
+                    />
      <button class="logout" @click="logout()"> Logout </button>
        <div class="container">
   <table ref="tablerow" rel="tablerow" class="neumorphic">
@@ -64,6 +68,7 @@ export default {
   data() {
     return {
        isModalVisible: false,
+       isModalVisibleN: false,
        isvis:false,
        truarr: null,
        curplace: null,
@@ -97,7 +102,7 @@ mounted(){
     },
   
     showModal() {
-        this.isModalVisible = true;
+        this.isModalVisibleN = true;
       },
        showModall(info) {
          info.display = true;
@@ -107,6 +112,7 @@ mounted(){
       },
       closeModal() {
         this.isModalVisible = false;
+        this.isModalVisibleN = false;
       },
       delTrade(place){
         this.deleteTrade(place);
@@ -207,12 +213,12 @@ a {
 .logout{
   position: fixed;
   bottom: 30px;
-  left: 40px;
+  left: 2px;
 }
 .btn{
   position: fixed;
   bottom: 30px;
-  right: 40px;
+  right:2px
 }
 .btn:hover {
   box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),

@@ -94,7 +94,7 @@ const mutations = {
                  const t = new trade(y.type,y.quantity,y.reprice,y.price,y.buyosell,Number(y.id), y._id);
                  console.log(t);
                  state.trading.push(t);
-                 console.log(state.user);
+
                }
               });
 
@@ -218,7 +218,7 @@ const mutations = {
             const t = new trade(y.type,y.quantity,y.reprice,y.price,y.buyosell,Number(y.id), y._id);
             console.log(t);
             state.trading.push(t);
-            console.log(state.user);
+ 
           }
          });
         
@@ -227,6 +227,7 @@ const mutations = {
    },
   async [LOGIN_USER](state, user){
      state.user = user;
+
    },
    [LOGIN_CHANGE](state){
     state.userLogin = !state.userLogin;
@@ -235,9 +236,6 @@ const mutations = {
      state.userLogin=false;
      state.trading = [];
      state.user = null;
-     localStorage.username = "null";
-     localStorage.password = "null";
-     localStorage.tid = "null";
    }
 
 };
