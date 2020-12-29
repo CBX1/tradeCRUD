@@ -53,6 +53,7 @@ import axios from 'axios'
         created() {
           
               if (localStorage.tid !== "null") {
+                  console.log(localStorage.tid)
                   const t = new user(localStorage.username, localStorage.password, localStorage.tid);
                 this.loginUser(t);
                 this.loginChange();
