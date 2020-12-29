@@ -58,7 +58,7 @@ import axios from 'axios'
                 this.loginChange();
               //  // console.log(localStorage.tid);
                 // // console.log(data[0]._id)
-                this.$router.push({name:'about'})
+                this.$router.push({name:'list'})
                   // console.log(t);
             this.loginUser(t);
             }
@@ -99,7 +99,7 @@ import axios from 'axios'
                  const t = new user(this.username, this.password, response.data.data.createAccount._id)
                  this.loginUser(t);
                 this.loginChange();
-                this.$router.push({name:'about'})
+                this.$router.push({name:'list'})
              }
          });
 
@@ -118,12 +118,9 @@ import axios from 'axios'
                        this.incorrect_password = false;
 
                    },
-        register(){
-             this.$router.push({name:'newaccount'})
-        },
         checkifLogin(){
       if(this.userLogin){
-        this.$router.push({name:'about'})
+        this.$router.push({name:'list'})
       }
     },
           async  loginCheck(){
@@ -165,7 +162,7 @@ import axios from 'axios'
                // // console.log(this.user)
                 this.loginChange();
                 // // console.log(data[0]._id)
-                this.$router.push({name:'about'})
+                this.$router.push({name:'list'})
                   localStorage.username = t.username;
                 localStorage.password = t.password;
                 localStorage.tid = t.tid;
