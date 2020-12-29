@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class= "container">
   <transition name="modal-fade">
     <div class="modal-backdrop">
       <div class="modal"
@@ -7,14 +7,15 @@
         aria-labelledby="modalTitle"
         aria-describedby="modalDescription">
           
-            <Forms> </Forms>
+            <Forms :tradie="tradie"> </Forms>
               <button
               type="button"
               class="btn-green"
               @click="close"
               aria-label="Close modal"
             >
-              Close me!
+              Close
+              
             </button>
       </div>
     </div>
@@ -32,6 +33,13 @@ import Forms from './Forms.vue';
         this.$emit('close');
       },
     },
+    props :{
+       tradie:{
+           type: Object,
+           default: () => {}
+       }
+       
+   },
     components: {
     Forms,
   },
@@ -45,18 +53,17 @@ import Forms from './Forms.vue';
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow:hidden;
   }
 
   .modal {
-    background: #FFFFFF;
     box-shadow: 2px 2px 20px 1px;
-    overflow-x: auto;
-    display: flex;
-    flex-direction: column;
+    background-color:white; 
+    box-shadow: 13px 13px 20px;
   }
 
   .modal-header,
@@ -91,10 +98,24 @@ import Forms from './Forms.vue';
     background: transparent;
   }
 
-  .btn-green {
-    color: white;
-    background: #4AAE9B;
-    border: 1px solid #4AAE9B;
-    border-radius: 2px;
+
+  .container{
+    display:flex
   }
+  button {
+  border: none;
+  border-radius: 5000px;
+  padding: 1em;
+  background: #efeeee;
+  box-shadow:
+    inset 4px 4px 6px #ccc,
+    inset -4px -4px 6px #fff;
+  margin-bottom: 2em;
+  color: #888;
+  font-family: 'Poppins', sans-serif;
+}
+
+label{
+  font-size:20px;
+}
 </style>

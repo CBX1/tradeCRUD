@@ -11,7 +11,7 @@
   </button>
      <button class="logout" @click="logout()"> Logout </button>
        <div class="container">
-  <table ref="tablerow" rel="tablerow" class="tableC">
+  <table ref="tablerow" rel="tablerow" class="neumorphic">
 
 
          <thead>
@@ -19,7 +19,7 @@
                     <th>Trade</th>
                     <th>Quantity</th>
                     <th>Trade Type</th>
-                    <th>Price </th>
+                    <th> Price </th>
                     <th> Resell Price</th>
                     <th> Profit </th>
                 </tr>
@@ -32,9 +32,16 @@
                     <td>{{info.buy}} $ </td>
                     <td>{{info.resell}} $</td>
                     <td> {{profit(info)}} $ </td>
-                   <td> <img class="iconClass" src="../assets/edit.svg" @click="change(info)"> 
+                   <td> <img class="iconClass" src="../assets/edit.svg" @click="showModall(info)"> 
+                                      
                      <img class="iconClass" src="../assets/delete.svg" @click="delTrade(info)">  </td>
-                       <div v-if="info.display" > <Form :tradie="info"/> </div>
+                       <div v-if="info.display" > 
+                       <modal
+                      v-show="isModalVisible"
+                      :tradie="info"
+                      @close="closeModal"
+                    />
+                        </div>
                 </tr>
               
                     
@@ -43,10 +50,7 @@
   <br> <br> <br>
 
 
-  <modal
-    v-show="isModalVisible"
-    @close="closeModal"
-  />
+
   </div>
 </div>
 </template>
@@ -55,7 +59,6 @@
 
 import {mapState,mapActions} from 'vuex';
 import Modal from '../components/Modal.vue';
-import Form from '../components/Forms.vue';
 export default {
   name: 'Hello',
   data() {
@@ -68,7 +71,6 @@ export default {
   },
   components: {
     Modal,
-    Form,
   },
   computed: {
       ...mapState(['trading','user','userLogin']),
@@ -96,6 +98,12 @@ mounted(){
   
     showModal() {
         this.isModalVisible = true;
+      },
+       showModall(info) {
+         info.display = true;
+        this.isModalVisible = true;
+
+        console.log(info)
       },
       closeModal() {
         this.isModalVisible = false;
@@ -162,12 +170,7 @@ a {
   display:flex;
   flex-direction:column;
 }
-.tableC{
-  font-size:20px;
-}
-.tableB{
-   font-size:25px;
-}
+
    body {
             background: #fb887c;
             color: #fff;
@@ -211,17 +214,32 @@ a {
   bottom: 30px;
   right: 40px;
 }
+.btn:hover {
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+}
+
+.logout:hover {
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+}
+
 button {
-	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
-	color: #FFFFFF;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
+  width: 170px;
+  border: none;
+  border-radius: 5000px;
+  padding: 1em;
+  background: #efeeee;
+  box-shadow:
+    inset 4px 4px 6px #ccc,
+    inset -4px -4px 6px #fff;
+  margin-bottom: 2em;
+  color: #888;
+  font-family: 'Poppins', sans-serif;
 }
 .incorrectPassword{
     color:red;
@@ -238,4 +256,36 @@ button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
 }
+
+table.neumorphic{
+  width: 80%;
+  border-spacing: 0;
+  color: #212121;
+  text-align: center;
+  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6),
+  -9px -9px 16px rgba(255, 255, 255, 0.6);
+}
+table.neumorphic thead{
+  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6);
+}
+table.neumorphic th{
+  padding: 7px;
+}
+
+table.neumorphic>tbody>tr>td {
+  padding: 10px;
+  font-size: 20px;
+}
+
+
+table.neumorphic>tbody>tr:hover {
+  padding: 20px;
+  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6),
+  -9px -9px 16px rgba(255, 255, 255, 0.6);
+}
+
+
+
+
+
 </style>
