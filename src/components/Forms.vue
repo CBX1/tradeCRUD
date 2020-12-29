@@ -102,5 +102,16 @@ export default {
   color: #555;
   padding:20px 10px 20px 5px;
 }
-
+.submit {
+  border: none;
+  border-radius: 5000px;
+  padding: 1em;
+  background: #efeeee;
+  box-shadow:
+    inset 4px 4px 6px #ccc,
+    inset -4px -4px 6px #fff;
+  margin-bottom: 2em;
+  color: #888;
+  font-family: 'Poppins', sans-serif;
+}
 </style>

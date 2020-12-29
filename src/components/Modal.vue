@@ -10,7 +10,7 @@
             <Forms :tradie="tradie"> </Forms>
               <button
               type="button"
-              class="btn-green"
+              class="btn-g"
               @click="close"
               aria-label="Close modal"
             >
@@ -88,7 +88,7 @@ import Forms from './Forms.vue';
     padding: 20px 10px;
   }
 
-  .btn-close {
+  .btn-g-close {
     border: none;
     font-size: 20px;
     padding: 20px;
@@ -102,7 +102,7 @@ import Forms from './Forms.vue';
   .container{
     display:flex
   }
-  button {
+  .btn-g {
   border: none;
   border-radius: 5000px;
   padding: 1em;
