@@ -21,6 +21,11 @@ const routes = [
     name: 'list',
     component: TradeList
   },
+  {
+    path: "*",
+    name: 'all',
+    component: Login,
+  }
 ]
 
 const router = new VueRouter({
