@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
-import TradeList from '../components/TradeList.vue'
+import TradeList from '../views/TradeList.vue'
 
 Vue.use(VueRouter)
 

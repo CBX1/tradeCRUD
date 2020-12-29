@@ -1,7 +1,7 @@
 <template width:100%>
 <div class="background">
 
-      <button
+      <button 
     type="button"
     class="btn"
     @click="showModal"
@@ -9,7 +9,7 @@
  
     Add Trade
   </button>
-     <button @click="logout()"> Logout </button>
+     <button class="logout" @click="logout()"> Logout </button>
        <div class="container">
   <table ref="tablerow" rel="tablerow" class="tableC">
 
@@ -22,7 +22,6 @@
                     <th>Price </th>
                     <th> Resell Price</th>
                     <th> Profit </th>
-                    <th> </th>
                 </tr>
             </thead>
             <tbody class="tableB">
@@ -55,8 +54,8 @@
 <script>
 
 import {mapState,mapActions} from 'vuex';
-import Modal from './Modal.vue';
-import Form from './Forms.vue';
+import Modal from '../components/Modal.vue';
+import Form from '../components/Forms.vue';
 export default {
   name: 'Hello',
   data() {
@@ -164,9 +163,79 @@ a {
   flex-direction:column;
 }
 .tableC{
-  font-size:35px;
+  font-size:20px;
 }
 .tableB{
    font-size:25px;
+}
+   body {
+            background: #fb887c;
+            color: #fff;
+            font-family: 'Lato', Arial, sans-serif;
+        }
+
+        h1 {
+            font-family: "proxima-nova",sans-serif;
+            letter-spacing: -0.01em;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 60px;
+            margin-left: -3px;
+            line-height: 1em;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 8px;
+            text-rendering: optimizeLegibility;
+        }
+
+        table {
+            width: 80%;
+            margin: auto;
+        }
+
+        table, th, td {
+            border: 1px solid #fff;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+.logout{
+  position: fixed;
+  bottom: 30px;
+  left: 40px;
+}
+.btn{
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+}
+button {
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+.incorrectPassword{
+    color:red;
+}
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
 }
 </style>

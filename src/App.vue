@@ -26,7 +26,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #fffffe;
+      background-color: #EFF0F3;
     }
 #nav {
   color: #716040;
