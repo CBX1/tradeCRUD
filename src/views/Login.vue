@@ -52,7 +52,7 @@ import axios from 'axios'
         },
         created() {
           
-              if (localStorage.tid !== "null") {
+              if (localStorage.tid !== "null" && typeof localStorage.tid !== 'undefined') {
                   console.log(localStorage.tid)
                   const t = new user(localStorage.username, localStorage.password, localStorage.tid);
                 this.loginUser(t);
