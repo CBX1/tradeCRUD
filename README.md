@@ -1,4 +1,5 @@
-# scavenge
+# Trade CRUD
+CRUD application for tracking trades.
 
 ## Project setup
 ```
